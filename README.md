@@ -11,3 +11,15 @@ Health Check
 ---
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
+
+Sql schema for user and roles   
+
+    user
+      email varcahar(30) primary key
+      password varchar(30)
+      
+    roles 
+      email varchar(30) forign key 
+      role varchar(30)  
+        
+
