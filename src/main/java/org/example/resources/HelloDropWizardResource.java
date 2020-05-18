@@ -1,6 +1,8 @@
 package org.example.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import io.dropwizard.auth.Auth;
 import org.example.api.Saying;
 import org.example.model.User;
@@ -12,29 +14,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 
+
 @RolesAllowed("Admin")
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloDropWizardResource {
     private final String template;
     private final String defaultName;
-    private final AtomicLong counter;
+    private final AtomicLong counter = new AtomicLong();
 
-    public HelloDropWizardResource(String template, String defaultName) {
+    @Inject
+    public HelloDropWizardResource(@Named("template") String template, @Named("defualtName") String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
-        this.counter = new AtomicLong();
     }
+
 
     @GET
     @Timed
     public Saying sayHello(@Auth User user) {
-
-        final String value;
-        if (user != null)
-            value = String.format(template, user.getName());
-        else
-            value = String.format(template, defaultName);
-        return new Saying(counter.getAndIncrement(), value);
+        return new Saying(counter.getAndIncrement(), String.format(template, user.getName()));
     }
 }

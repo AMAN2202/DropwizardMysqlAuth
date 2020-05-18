@@ -19,9 +19,9 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(long id) throws NullPointerException {
-        Employee employee=employeeDAO.getEmployee(id);
-        if(employee.equals(null))
-            throw  new NullPointerException();
+        Employee employee = employeeDAO.getEmployee(id);
+        if (employee.equals(null))
+            throw new NullPointerException();
         return employee;
     }
 
@@ -29,11 +29,21 @@ public class EmployeeService {
         employeeDAO.addEmployee(employee.getName(), employee.getSalary());
     }
 
-    public void updateEmployee(Employee employee) {
+    public void updateEmployee(Employee employee) throws NullPointerException {
+        Employee emp;
+        emp = employeeDAO.getEmployee(employee.getId());
+        if (emp.equals(null)) {
+            throw new NullPointerException();
+        }
         employeeDAO.updateEmployee(employee.getName(), employee.getSalary(), employee.getId());
     }
 
-    public void deleteEmployee(long id) {
+    public void deleteEmployee(long id) throws NullPointerException {
+        Employee emp = employeeDAO.getEmployee(id);
+
+        if (emp.equals(null)) {
+            throw new NullPointerException();
+        }
         employeeDAO.deleteEmployee(id);
     }
 

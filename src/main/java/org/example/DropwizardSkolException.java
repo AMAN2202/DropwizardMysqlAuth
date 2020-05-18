@@ -27,6 +27,7 @@ public class DropwizardSkolException extends Throwable {
         this.code = code;
 
     }
+
     @JsonProperty
     public int getCode() {
 

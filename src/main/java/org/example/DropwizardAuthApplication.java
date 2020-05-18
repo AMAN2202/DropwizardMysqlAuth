@@ -1,5 +1,7 @@
 package org.example;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
@@ -21,6 +23,7 @@ import org.skife.jdbi.v2.DBI;
 
 public class DropwizardAuthApplication extends Application<DropwizardAuthConfiguration> {
 
+
     public static void main(final String[] args) throws Exception {
         new DropwizardAuthApplication().run(args);
     }
@@ -32,7 +35,7 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
 
     @Override
     public void initialize(final Bootstrap<DropwizardAuthConfiguration> bootstrap) {
-        // TODO: application initialization
+
     }
 
     @Override
@@ -40,15 +43,19 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
                     final Environment environment) {
 
         // TODO: implement application
+        //Database related
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, config.getDatabase(), "dbb");
-
         final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
-
         final EmployeeDAO employeeDAO = jdbi.onDemand(EmployeeDAO.class);
 
 
-        environment.jersey().register(new HelloDropWizardResource("%s", "aman"));
+        //DI
+        Injector injector = Guice.createInjector(new SampleModule());
+        final HelloDropWizardResource helloDropWizardResource = injector.getInstance(HelloDropWizardResource.class);
+
+
+        environment.jersey().register(helloDropWizardResource);
         environment.jersey().register(new EmployeeResource(new EmployeeService(employeeDAO)));
 
         environment.jersey().register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>()
@@ -58,8 +65,8 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
                 .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
-
         environment.jersey().register(new DropwizardSkolExceptionMapper());
+
     }
 
 }
