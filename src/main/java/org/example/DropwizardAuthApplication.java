@@ -9,10 +9,13 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.example.auth.AppAuthorizer;
 import org.example.auth.AppBasicAuthenticator;
-import org.example.db.User;
+import org.example.db.EmployeeDAO;
 import org.example.db.UserDAO;
-import org.example.db.UserService;
+import org.example.model.User;
+import org.example.resources.EmployeeResource;
 import org.example.resources.HelloDropWizardResource;
+import org.example.service.EmployeeService;
+import org.example.service.UserService;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.skife.jdbi.v2.DBI;
 
@@ -35,15 +38,18 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
     @Override
     public void run(final DropwizardAuthConfiguration config,
                     final Environment environment) {
+
         // TODO: implement application
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, config.getDatabase(), "dbb");
 
-        final UserDAO userDAO=jdbi.onDemand(UserDAO.class);
+        final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+
+        final EmployeeDAO employeeDAO = jdbi.onDemand(EmployeeDAO.class);
 
 
-        environment.jersey().register(new HelloDropWizardResource("%s","aman"));
-
+        environment.jersey().register(new HelloDropWizardResource("%s", "aman"));
+        environment.jersey().register(new EmployeeResource(new EmployeeService(employeeDAO)));
 
         environment.jersey().register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>()
                 .setAuthenticator(new AppBasicAuthenticator(new UserService(userDAO)))
@@ -52,6 +58,8 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
                 .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
+
+        environment.jersey().register(new DropwizardSkolExceptionMapper());
     }
 
 }

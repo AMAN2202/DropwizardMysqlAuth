@@ -1,4 +1,4 @@
-package org.example.db;
+package org.example.model;
 
 import java.security.Principal;
 import java.util.Set;
@@ -6,20 +6,15 @@ import java.util.Set;
 public class User implements Principal {
     private String email;
     private String password;
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
-
-    private  Set<String> roles;
-
-    public String getEmail() {
-        return email;
-    }
+    private Set<String> roles;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -47,6 +42,9 @@ public class User implements Principal {
         return roles;
     }
 
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String getName() {
