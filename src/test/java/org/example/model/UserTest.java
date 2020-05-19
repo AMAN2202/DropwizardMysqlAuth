@@ -1,4 +1,4 @@
-package com.sahajjain.model;
+package org.example.model;
 
 import static io.dropwizard.testing.FixtureHelpers.*;
 import static org.assertj.core.api.Assertions.assertThat;
