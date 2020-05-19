@@ -2,8 +2,10 @@ package org.example.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.jersey.errors.ErrorMessage;
+import lombok.AllArgsConstructor;
 import org.example.DropwizardSkolException;
 import org.example.model.Employee;
+import org.example.service.SalaryService;
 import org.example.service.EmployeeService;
 
 import javax.annotation.security.RolesAllowed;
@@ -15,14 +17,15 @@ import javax.ws.rs.core.Response;
 @RolesAllowed("Admin")
 @Path("/employee")
 @Produces(MediaType.APPLICATION_JSON)
+@AllArgsConstructor
 public class EmployeeResource {
 
-    private final EmployeeService employeeService;
+    @Inject private final EmployeeService employeeService;
 
-    @Inject
-    public EmployeeResource(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+
+
+
+
 
     @GET
     @Timed
@@ -42,6 +45,8 @@ public class EmployeeResource {
         } catch (Exception e) {
             return Response.status(404).entity(new ErrorMessage("Employee not found")).build();
         }
+        long updated_salary=Long.valueOf(new SalaryService(employee.getSalary()).execute());
+        employee.setSalary(updated_salary);
         return Response.ok(employee).build();
     }
 

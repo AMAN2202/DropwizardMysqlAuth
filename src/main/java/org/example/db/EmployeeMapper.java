@@ -10,10 +10,10 @@ import java.sql.SQLException;
 public class EmployeeMapper implements ResultSetMapper<Employee> {
     @Override
     public Employee map(int index, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new Employee(
-                resultSet.getLong("id"),
-                resultSet.getString("name"),
-                resultSet.getLong("salary")
-        );
+        return  Employee.builder()
+                .id(resultSet.getLong("id"))
+                .name(resultSet.getString("name"))
+                .salary(resultSet.getLong("salary"))
+                .build();
     }
 }

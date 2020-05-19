@@ -1,16 +1,15 @@
 package org.example.service;
 
+import lombok.AllArgsConstructor;
 import org.example.db.EmployeeDAO;
 import org.example.model.Employee;
 
 import java.util.Set;
-
+@AllArgsConstructor
 public class EmployeeService {
     private final EmployeeDAO employeeDAO;
 
-    public EmployeeService(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
-    }
+
 
 
     public Set<Employee> getAllEmployee() {

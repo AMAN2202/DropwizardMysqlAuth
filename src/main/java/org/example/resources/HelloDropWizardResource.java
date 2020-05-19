@@ -11,11 +11,13 @@ import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 
-@RolesAllowed("Admin")
+
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloDropWizardResource {
@@ -32,7 +34,7 @@ public class HelloDropWizardResource {
 
     @GET
     @Timed
-    public Saying sayHello(@Auth User user) {
-        return new Saying(counter.getAndIncrement(), String.format(template, user.getName()));
+    public Saying sayHello(@QueryParam("name") Optional<String> name) {
+        return new Saying(counter.getAndIncrement(), String.format(template, name.orElse(defaultName)));
     }
 }
