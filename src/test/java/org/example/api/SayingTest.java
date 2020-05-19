@@ -1,6 +1,6 @@
-package com.sahajjain.api;
+package org.example.api;
 
-import com.sahajjain.CollabWorkDWConfiguration;
+import org.example.CollabWorkDWConfiguration;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
