@@ -2,15 +2,17 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
-import io.dropwizard.client.HttpClientConfiguration;
 import io.dropwizard.db.DataSourceFactory;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 @Getter
+@NoArgsConstructor
 public class DropwizardAuthConfiguration extends Configuration {
 
     @Valid
@@ -25,16 +27,10 @@ public class DropwizardAuthConfiguration extends Configuration {
     private String defaultName;
 
 
-
-
-
-
     @Valid
     @NotNull
     @JsonProperty
     private DataSourceFactory database = new DataSourceFactory();
-
-
 
 
     @NotNull

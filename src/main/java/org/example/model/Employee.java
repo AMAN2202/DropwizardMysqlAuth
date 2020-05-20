@@ -1,23 +1,25 @@
 package org.example.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Getter
 @Setter
 @Builder
+@Entity
+@Table(name = "employee")
 public class Employee {
-    @JsonProperty
+    @Id
     private long id;
 
-    @JsonProperty
     private String name;
 
-    @JsonProperty
     private long salary;
 
 }

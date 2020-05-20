@@ -3,35 +3,33 @@ package org.example.service;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 
-
-import java.util.concurrent.TimeUnit;
-
 public class SalaryService extends HystrixCommand<String> {
     private final Long salary;
 
 
     public SalaryService(Long salary) {
         super(HystrixCommandGroupKey.Factory.asKey("SalService"));
-        this.salary=salary;
+        this.salary = salary;
     }
 
     @Override
     protected String run() throws Exception {
+
 //        change to allow or block service dummy nullpointerexception
-        boolean allowService=true;
+        boolean allowService = true;
 
 //        TimeUnit.SECONDS.sleep(1);
 
 //        can use json for serialijing and deserializing for objects
-        Long finalSalary=0L;
+        Long finalSalary = 0L;
 
-        if(allowService) {
+        if (allowService) {
             return Long.toString(finalSalary);
-        }
-        else
+        } else
             throw new NullPointerException();
 
     }
+
     @Override
     protected String getFallback() {
 
