@@ -34,6 +34,9 @@ public class EmployeeService {
     }
 
     public void updateEmployee(Employee employee) throws NullPointerException {
+        Employee emp = employeeDAO.findById(employee.getId());
+        if (emp.equals(null))
+            throw new NullPointerException();
         employeeDAO.update(employee);
     }
 

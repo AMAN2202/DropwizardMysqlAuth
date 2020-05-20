@@ -23,7 +23,6 @@ public class SampleModule extends AbstractModule {
         bind(String.class).annotatedWith(Names.named("defualtName")).toInstance("Stranger");
 
 
-
     }
 
 

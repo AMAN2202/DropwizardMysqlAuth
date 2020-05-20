@@ -2,7 +2,6 @@ package org.example;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.netflix.config.ConfigurationManager;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
