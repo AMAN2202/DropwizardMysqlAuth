@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.DropwizardSkolException;
 import org.example.db.EmployeeDAO;
 import org.example.model.Employee;
 
@@ -34,10 +35,14 @@ public class EmployeeService {
     }
 
     public void updateEmployee(Employee employee) throws NullPointerException {
-        Employee emp = employeeDAO.findById(employee.getId());
-        if (emp.equals(null))
-            throw new NullPointerException();
-        employeeDAO.update(employee);
+        try {
+            employeeDAO.update(employee);
+        }
+        catch (DropwizardSkolException ex)
+        {
+            throw  new NullPointerException();
+
+        }
     }
 
     public void deleteEmployee(long id) throws NullPointerException {

@@ -12,6 +12,8 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.apache.commons.configuration.MapConfiguration;
 import org.example.auth.AppAuthorizer;
 import org.example.auth.AppBasicAuthenticator;
@@ -51,13 +53,13 @@ public class DropwizardAuthApplication extends Application<DropwizardAuthConfigu
     public void initialize(final Bootstrap<DropwizardAuthConfiguration> bootstrap) {
         bootstrap.addBundle(hibernate);
 
-//        guiceBundle = GuiceBundle.<DropwizardAuthConfiguration>newBuilder()
-//                .addModule(new SampleModule())
-//                .setConfigClass(DropwizardAuthConfiguration.class)
-//                .build();
-//
-//        bootstrap.addBundle(guiceBundle);
-
+        bootstrap.addBundle(new SwaggerBundle<DropwizardAuthConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(DropwizardAuthConfiguration configuration) {
+                return configuration.swaggerBundleConfiguration;
+            }
+        });
+    
     }
 
     @Override

@@ -3,6 +3,7 @@ package org.example.resources;
 import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.errors.ErrorMessage;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.example.DropwizardSkolException;
 import org.example.model.Employee;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Response;
 @Path("/employee")
 @Produces(MediaType.APPLICATION_JSON)
 @AllArgsConstructor
+@Api
 public class EmployeeResource {
 
     @Inject

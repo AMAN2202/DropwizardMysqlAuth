@@ -3,7 +3,9 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import lombok.AllArgsConstructor;
+////import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+//import lombok.AllArgsConstructor;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,6 +38,9 @@ public class DropwizardAuthConfiguration extends Configuration {
     @NotNull
     @JsonProperty
     private Map<String, Object> defaultHystrixConfig;
+
+    @JsonProperty("swagger")
+    public SwaggerBundleConfiguration swaggerBundleConfiguration;
 
 
 }

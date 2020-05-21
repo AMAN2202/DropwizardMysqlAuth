@@ -2,6 +2,7 @@ package org.example.db;
 
 
 import io.dropwizard.hibernate.AbstractDAO;
+import org.example.DropwizardSkolException;
 import org.example.model.Employee;
 import org.hibernate.SessionFactory;
 
@@ -16,7 +17,7 @@ public interface EmployeeDAO  {
 
      void delete(Employee employee);
 
-     void update(Employee employee);
+     void update(Employee employee) throws DropwizardSkolException;
 
      Employee insert(Employee employee);
 

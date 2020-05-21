@@ -1,6 +1,7 @@
 package org.example.db;
 
 import io.dropwizard.hibernate.AbstractDAO;
+import org.example.DropwizardSkolException;
 import org.example.model.Employee;
 import org.hibernate.SessionFactory;
 
@@ -26,8 +27,17 @@ public class EmployeeDAOImpl extends AbstractDAO<Employee> implements EmployeeDA
         currentSession().delete(employee);
     }
 
-    public void update(Employee employee) {
-        currentSession().saveOrUpdate(employee);
+    public void update(Employee employee) throws DropwizardSkolException {
+        try {
+            Employee emp = findById(employee.getId());
+        }
+        catch (Exception ex)
+        {
+            throw  new DropwizardSkolException(404,"Employee not found");
+        }
+        finally {
+            currentSession().evict(employee);
+        }
     }
 
     public Employee insert(Employee employee) {

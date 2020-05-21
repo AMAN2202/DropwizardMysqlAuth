@@ -22,3 +22,6 @@ defaultHystrixConfig:
   hystrix.threadpool.PinCheckService.maxQueueSize: 50
   hystrix.threadpool.PinCheckService.coreSize: 5
 
+swagger:
+  resourcePackage: org.example.resources
+

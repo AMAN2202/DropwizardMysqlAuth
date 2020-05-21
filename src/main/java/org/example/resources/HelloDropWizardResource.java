@@ -3,6 +3,7 @@ package org.example.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import io.swagger.annotations.Api;
 import org.example.api.Saying;
 
 import javax.ws.rs.GET;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
+@Api
 public class HelloDropWizardResource {
     private final String template;
     private final String defaultName;
