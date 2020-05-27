@@ -23,5 +23,5 @@ defaultHystrixConfig:
   hystrix.threadpool.PinCheckService.coreSize: 5
 
 swagger:
-  resourcePackage: org.example.resources
+  resourcePackage: org.example.empApi.resources
 
