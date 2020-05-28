@@ -1,40 +1,22 @@
-package org.example.empApi.service;
+package org.example.empApi.resources;
 
-import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixCommandGroupKey;
-import org.example.empApi.resources.EmployeeResource;
-
-public class SalaryService extends HystrixCommand<String> {
-    private final Long salary;
-    EmployeeResource employeeResource[];
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import lombok.NoArgsConstructor;
 
 
-    public SalaryService(Long salary) {
-        super(HystrixCommandGroupKey.Factory.asKey("SalService"));
-        this.salary = salary;
+@NoArgsConstructor
+public class SalaryService  {
+
+    @HystrixCommand(fallbackMethod = "defaultSalary")
+    public long updateSalary(long salary)
+    {
+
+        return salary*2;
     }
 
-    @Override
-    protected String run() throws Exception {
-
-//        change to allow or block service dummy nullpointerexception
-        boolean allowService = true;
-//        TimeUnit.SECONDS.sleep(1);
-
-//        can use json for serialijing and deserializing for objects
-        Long finalSalary = 0L;
-
-        if (allowService) {
-            return Long.toString(finalSalary);
-        } else
-            throw new NullPointerException();
-
+    public long defaultSalary(long salary,Throwable t)
+    {
+        return 100L;
     }
 
-    @Override
-    protected String getFallback() {
-
-        //when service is not reachable this will be returned
-        return String.valueOf(-100);
-    }
 }

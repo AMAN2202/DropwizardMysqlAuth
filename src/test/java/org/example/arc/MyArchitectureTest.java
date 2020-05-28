@@ -1,19 +1,20 @@
 package org.example.arc;
 
 
-import com.codahale.metrics.annotation.Timed;
-import com.tngtech.archunit.core.domain.JavaClass;
-import com.tngtech.archunit.core.domain.JavaClasses;
+import com.tngtech.archunit.base.DescribedPredicate;
+import com.tngtech.archunit.core.domain.*;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
-import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
@@ -76,23 +77,6 @@ public class MyArchitectureTest {
     static final ArchRule services_should_only_be_depended_on_other_services_or_db =
             classes().that().resideInAPackage("..service..")
                     .should().dependOnClassesThat().resideInAnyPackage("..db..", "..service..", "..java..");
-//    static ArchCondition<JavaClass> onlyBeAccessedBySecuredMethods =
-//            new ArchCondition<JavaClass>("UnitofWork") {
-//                @Override
-//                public void check(JavaClass item, ConditionEvents events) {
-//
-//
-//                    for (Method m : item.getClass().getDeclaredMethods()) {
-//                        if (!m.isAnnotationPresent(UnitOfWork.class) && m.isAnnotationPresent(Timed.class)) {
-//                            String message = String.format(
-//                                    "UnitofWorkMethod should be used", m.getName());
-//                            events.add(SimpleConditionEvent.violated(m.getName(), message));
-//                        }
-//                    }
-//                }
-//            };
-//    @ArchTest
-//    static final ArchRule resources_using_db_must_be_annotated_by_unit_of_work = classes().that().resideInAnyPackage("..resources..").should(onlyBeAccessedBySecuredMethods);
     @ArchTest
     private final ArchRule no_java_util_logging = NO_CLASSES_SHOULD_USE_JAVA_UTIL_LOGGING;
 
@@ -100,6 +84,9 @@ public class MyArchitectureTest {
     private void no_access_to_standard_streams_as_method(JavaClasses classes) {
         noClasses().should(ACCESS_STANDARD_STREAMS).check(classes);
     }
+
+
+
 
 
 }
