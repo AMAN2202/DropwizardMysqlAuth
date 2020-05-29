@@ -28,6 +28,11 @@ public class HystrixTest {
             new DescribedPredicate<JavaClass>("have a DAO") {
                 @Override
                 public boolean apply(JavaClass input) {
+                    /*
+                    Exclude matching classes
+                     */
+                    if(checker(input.getName(),config.getExclude()))
+                        return false;
 
 
                     for (JavaField javaField : input.getFields()) {
@@ -66,6 +71,12 @@ public class HystrixTest {
             new DescribedPredicate<JavaClass>("have a Api call") {
                 @Override
                 public boolean apply(JavaClass input) {
+
+                    /*
+                    Exclude matching classes
+                     */
+                    if(checker(input.getName(),config.getExclude()))
+                        return false;
 
                     for (JavaField javaField : input.getFields()) {
                         if (checker(javaField.getRawType().getName(), config.getClientLibrary()))

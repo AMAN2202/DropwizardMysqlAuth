@@ -4,9 +4,12 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+use regex for all operation
+ */
 @Getter
 public class Config {
+
     /*
     DAO List containg regex expression for DAOs
      */
@@ -16,6 +19,14 @@ public class Config {
     Can also conatin regex
      */
     List<String> clientLibrary = new ArrayList<>();
+
+    /*
+    List of class that you want to exclue for checks
+     */
+
+    List<String> exclude =new ArrayList<>();
+
+
 
     public Config() {
         daoList.add(".*DAO*.");
@@ -28,5 +39,6 @@ public class Config {
         clientLibrary.add(".*.RestTemplate$");
         clientLibrary.add(".*.HttpURLConnection$");
 
+        exclude.add(".*.ExternalApiConsumerService[1-2]");
     }
 }
