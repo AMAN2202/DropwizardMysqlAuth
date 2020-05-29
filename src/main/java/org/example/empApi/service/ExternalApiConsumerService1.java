@@ -1,7 +1,6 @@
 package org.example.empApi.service;
 
 import com.mysql.cj.xdevapi.JsonArray;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.ws.rs.client.Client;
@@ -10,8 +9,8 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 @NoArgsConstructor
-public class ExternalApiConsumerService {
-    private  final  Client client = ClientBuilder.newClient();
+public class ExternalApiConsumerService1 {
+    private final Client client = ClientBuilder.newClient();
 
     public void fun() {
 

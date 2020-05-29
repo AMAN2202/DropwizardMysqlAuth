@@ -1,21 +1,21 @@
-package org.example.empApi.resources;
+package org.example.empApi.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.NoArgsConstructor;
 
-
 @NoArgsConstructor
-public class SalaryService  {
+public class SalaryService {
 
     @HystrixCommand(fallbackMethod = "defaultSalary")
-    public long updateSalary(long salary)
-    {
+    public long updateSalary(long salary) {
 
-        return salary*2;
+
+        if (true)
+            throw new RuntimeException("dummy exception");
+        return salary * 2;
     }
 
-    public long defaultSalary(long salary,Throwable t)
-    {
+    private long defaultSalary(long salary, Throwable throwable) {
         return 100L;
     }
 

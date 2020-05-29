@@ -20,7 +20,9 @@ public class EmployeeService {
 
     public Set<Employee> getAllEmployee() {
         Set<Employee> employeeSet = employeeDAO.getAll();
+
         return employeeSet;
+
     }
 
     public Employee getEmployee(long id) throws NullPointerException {

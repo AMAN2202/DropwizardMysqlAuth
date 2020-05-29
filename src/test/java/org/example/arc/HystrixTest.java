@@ -13,12 +13,16 @@ import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
 
-import javax.ws.rs.client.Client;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 
 @AnalyzeClasses(packages = "org.example.empApi.service")
 public class HystrixTest {
+    static Config config = new Config();
+
 
     static DescribedPredicate<JavaClass> classHavingDAOField =
             new DescribedPredicate<JavaClass>("have a DAO") {
@@ -27,16 +31,21 @@ public class HystrixTest {
 
 
                     for (JavaField javaField : input.getFields()) {
-                        if (javaField.getRawType().getName().contains("DAO"))
+
+                        String filedName = javaField.getRawType().getName();
+                        if (checker(filedName, config.getDaoList()))
                             return true;
                     }
 
 
                     for (JavaMethod javaMethod : input.getMethods()) {
+
                         for (JavaCall javaCall : javaMethod.getCallsFromSelf()) {
-                            if (javaCall.getTargetOwner().getName().contains("DAO")) {
+
+
+                            String className = javaCall.getTargetOwner().getName();
+                            if (checker(className, config.getDaoList()))
                                 return true;
-                            }
                         }
                     }
 
@@ -51,8 +60,18 @@ public class HystrixTest {
                 public boolean apply(JavaClass input) {
 
                     for (JavaField javaField : input.getFields()) {
-                        if (javaField.getRawType().getSimpleName().equals(Client.class.getSimpleName()))
+                        if (checker(javaField.getRawType().getSimpleName(), config.getClientLibrary()))
                             return true;
+                    }
+                    for (JavaMethod javaMethod : input.getMethods()) {
+
+                        for (JavaCall javaCall : javaMethod.getCallsFromSelf()) {
+
+
+                            String className = javaCall.getTargetOwner().getName();
+                            if (checker(className, config.getClientLibrary()))
+                                return true;
+                        }
                     }
 
                     return false;
@@ -60,7 +79,7 @@ public class HystrixTest {
             };
 
 
-    static ArchCondition<JavaClass> mustUseHystrix =
+    static ArchCondition<JavaClass> methodMustUseHystrixHavingDBCallOrApiCAll =
             new ArchCondition<JavaClass>("method must use @Hystrixcommand annotations") {
                 @Override
                 public void check(JavaClass item, ConditionEvents events) {
@@ -82,24 +101,31 @@ public class HystrixTest {
 
                 }
             };
-
+    @ArchTest
+    private final ArchRule Hystrix_rule =
+            classes().that(classHavingApiCall).or(classHavingDAOField).should(methodMustUseHystrixHavingDBCallOrApiCAll);
 
     private static boolean methodMakingDbCall(JavaCall javaCall) {
-        return javaCall.getTargetOwner().getName().contains("DAO");
+        return checker(javaCall.getTargetOwner().getName(), config.getDaoList());
     }
 
     private static boolean methodCallingAPi(JavaCall javaCall) {
-//        System.out.println(javaCall.getTargetOwner().getSimpleName()+" "+Client.class.getSimpleName());
-        return javaCall.getTargetOwner().getSimpleName().equals(Client.class.getSimpleName());
+        return checker(javaCall.getTargetOwner().getSimpleName(), config.getClientLibrary());
+    }
+
+    private static boolean checker(String name, List<String> list) {
+
+        for (String possibleCriteria : list) {
+            Pattern r = Pattern.compile(possibleCriteria);
+            Matcher m = r.matcher(name);
+            if (m.find()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean methodNotUsingHystrix(JavaMethod javaMethod) {
         return !javaMethod.isAnnotatedWith(HystrixCommand.class);
     }
-
-
-
-    @ArchTest
-    private final ArchRule Hystrix_rule =
-            classes().that(classHavingApiCall).or(classHavingDAOField).should(mustUseHystrix);
 }
