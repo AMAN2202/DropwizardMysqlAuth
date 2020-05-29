@@ -137,6 +137,60 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>com.societegenerale.commons</groupId>
+                <artifactId>arch-unit-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <projectPath>${project.basedir}/target</projectPath>
+                    <rules>
+<!--                        <preConfiguredRules>-->
+<!--                            <rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>-->
+<!--                        </preConfiguredRules>-->
+<!--                        -->
+                        <configurableRules>
+                            <configurableRule>
+                                <rule>com.sahajjain.rules.sampleCheck</rule>
+                                <applyOn>
+                                    <packageName>org.example</packageName>
+                                    <scope>main</scope>
+                                </applyOn>
+
+                                <checks>
+                                    <!-- otherwise you can specify either field or method names here. If no checks block is defined, all are executed -->
+                                    <check>check1</check>
+                                </checks>
+                            </configurableRule>
+                        </configurableRules>
+                    </rules>
+                    </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>arch-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.tngtech.archunit</groupId>
+                        <artifactId>archunit</artifactId>
+                        <version>${tng.archunit.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sahajjain</groupId>
+                        <artifactId>sample-rules</artifactId>
+                        <version>1.0.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.societegenerale.commons</groupId>
+                        <artifactId>arch-unit-build-plugin-core</artifactId>
+                        <version>2.5.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.1.1</version>
