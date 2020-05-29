@@ -19,14 +19,14 @@ public class Config {
 
     public Config() {
         daoList.add(".*DAO*.");
-        daoList.add("repository");
-        daoList.add("db");
-        daoList.add("data");
+//        daoList.add("repository");
+//        daoList.add("db");
+//        daoList.add("data");
 
 
-        clientLibrary.add("Client");
-        clientLibrary.add("RestTemplate");
-        clientLibrary.add("HttpURLConnection");
+        clientLibrary.add(".*.Client$");
+        clientLibrary.add(".*.RestTemplate$");
+        clientLibrary.add(".*.HttpURLConnection$");
 
     }
 }
