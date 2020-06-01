@@ -41,9 +41,18 @@ public class Config {
 
     List<String> packagesToCheckCycle = new ArrayList<>();
 
-
+/*
+    map<layername ,list of regex for layer>
+ */
     Map<String, List<String>> layers = new TreeMap<>();
+    /*
+        Map<Layer1,list of layers acessing layer1>
+     */
     Map<String, List<String>> acessRules = new TreeMap<>();
+    /*
+    ignore acess of one class in one layer by another class in other layer
+       Map <classUsed ,voilatingClass>
+     */
     Map<String,String> ignoreClasses =new TreeMap<>();
 
     public Config() {
