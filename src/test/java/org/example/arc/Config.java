@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /*
 use regex for all operation
@@ -22,7 +24,7 @@ public class Config {
     List<String> clientLibrary = new ArrayList<>();
 
     /*
-    List of class that you want to exclue for checks
+    List of class that you want to excldue for checks
      */
 
     List<String> exclude = new ArrayList<>();
@@ -36,6 +38,13 @@ public class Config {
     List of annotation for recognising controllers
      */
     List<String> controllerRequestAnnotations = new ArrayList<>();
+
+    List<String> packagesToCheckCycle = new ArrayList<>();
+
+
+    Map<String, List<String>> layers = new TreeMap<>();
+    Map<String, List<String>> acessRules = new TreeMap<>();
+    Map<String,String> ignoreClasses =new TreeMap<>();
 
     public Config() {
         daoList.add(".*DAO*.");
@@ -60,6 +69,21 @@ public class Config {
         controllerRequestAnnotations.add("javax.ws.rs.POST");
         controllerRequestAnnotations.add("javax.ws.rs.DELETE");
         controllerRequestAnnotations.add("javax.ws.rs.PUT");
+
+
+        packagesToCheckCycle.add("org.example.empApi.(*)..");
+
+        layers.put("Controllers", List.of("org.example.empApi.resources.."));
+        layers.put("Services", List.of("org.example.empApi.service.."));
+        layers.put("Persistence",List.of("org.example.empApi.db.."));
+
+
+        acessRules.put("Services", List.of("Controllers"));
+        acessRules.put("Persistence",List.of("Services"));
+        acessRules.put("Controllers", List.of());
+
+        ignoreClasses.put("org.example.empApi.service.ExternalApiConsumerService1","org.example.empApi.db.EmployeeDAOImpl");
+
 
 
     }
