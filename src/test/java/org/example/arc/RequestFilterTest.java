@@ -13,6 +13,7 @@ import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 
+@Slf4j
 @ArchTag(value = "Request_Filter_Test")
 @AnalyzeClasses(packages="org.example",importOptions = {ImportOption.DoNotIncludeJars.class,
         ImportOption.DoNotIncludeTests.class,ImportOption.DoNotIncludeArchives.class})
@@ -48,7 +50,6 @@ public class RequestFilterTest {
         }
 
     }
-    static String Warnings="";
 
     static ArchCondition<JavaClass> mustSetTheGivenHeaderInTheGivenFilterClass =
             new ArchCondition<JavaClass>("must set the given header in the given filter class") {
@@ -79,14 +80,12 @@ public class RequestFilterTest {
                                 events.add(SimpleConditionEvent.violated(item, message));
                             }
                             else{
-                                Warnings+="WARNING: "+test_header_name+" is not being set by filter class\n";
+                                log.warn(test_header_name+" is not being set by filter class");
                             }
                         }
 
                     }
-                    if(events.isEmpty()){
-                        System.err.print(Warnings);
-                    }
+
 
                 }
             };
@@ -120,6 +119,5 @@ public class RequestFilterTest {
 
 
 }
-
 
 
