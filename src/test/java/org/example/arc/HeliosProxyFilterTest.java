@@ -16,7 +16,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 @AnalyzeClasses(packages="org.example",importOptions = {ImportOption.DoNotIncludeJars.class,
         ImportOption.DoNotIncludeTests.class,ImportOption.DoNotIncludeArchives.class})
 public class HeliosProxyFilterTest {
-    static String heliosProxyConfigurationClass="testConfiguration";
+
     static ArchCondition<JavaClass> add_helios_proxy_servlet_filter_in_run_method =
             new ArchCondition<JavaClass>("add_helios_proxy_servlet_filter") {
                 @Override
@@ -31,7 +31,7 @@ public class HeliosProxyFilterTest {
                                 if(javaCall.getDescription().matches(".*constructor.*HeliosProxyServletFilter.*")){
                                     heliosProxyServletFilterConstructor=true;
                                 }
-                                if(javaCall.getDescription().matches(".*"+heliosProxyConfigurationClass+".getProxyConfiguration.*")){
+                                if(javaCall.getDescription().matches(".*getProxyConfiguration.*")){
                                     heliosProxyConfiguration=true;
                                 }
 
@@ -50,7 +50,7 @@ public class HeliosProxyFilterTest {
                     }
                     if(!heliosProxyConfiguration){
                         String message = String.format(
-                                "ProxyConfiguration from "+heliosProxyConfigurationClass+" is not being accessed in run() of %s class ", item.getName());
+                                "ProxyConfiguration is not being accessed in run() of %s class ", item.getName());
                         events.add(SimpleConditionEvent.violated(item, message));
                     }
                 }
