@@ -41,7 +41,7 @@ public class HeliosProxyInterfaceTest {
             };
 
     @ArchTest
-    static final ArchRule every_public_function_in_res = classes().that(are_Interfaces).and().haveSimpleName("HeliosProxy")
+    static final ArchRule heliso_proxy_interface_must_be_implemented = classes().that(are_Interfaces).and().haveSimpleName("HeliosProxy")
             .and().resideInAPackage("")
             .should(be_Implemented);
 
