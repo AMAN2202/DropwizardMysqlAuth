@@ -2,6 +2,7 @@ import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.Dependency;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaField;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTag;
 import com.tngtech.archunit.junit.ArchTest;
@@ -9,12 +10,19 @@ import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
+import org.junit.jupiter.api.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ArchTag(value = "Cryptex_Test")
-@AnalyzeClasses(packages = {"com.flipkart.fpg.cryptex", "org.example"})
+@AnalyzeClasses(packages = {"CryptexPackage", "org.example"})
 public class CryptexTest {
+    @Test
+    public void isPackagePresent() throws Exception {
+        assertEquals(new ClassFileImporter().importPackages("..CryptexPackage..").isEmpty(),false,"Cryptex Library is not added as dependency" );
+
+    }
     static DescribedPredicate<JavaClass> are_Interfaces =
             new DescribedPredicate<JavaClass>("is interface") {
                 @Override

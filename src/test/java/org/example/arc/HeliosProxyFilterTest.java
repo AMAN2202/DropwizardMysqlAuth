@@ -1,6 +1,7 @@
 import com.tngtech.archunit.core.domain.JavaCall;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaMethod;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTag;
@@ -9,14 +10,20 @@ import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
+import org.junit.jupiter.api.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ArchTag(value = "HeliosProxy_Test")
 @AnalyzeClasses(packages="org.example",importOptions = {ImportOption.DoNotIncludeJars.class,
         ImportOption.DoNotIncludeTests.class,ImportOption.DoNotIncludeArchives.class})
 public class HeliosProxyFilterTest {
+    @Test
+    public void isPackagePresent() throws Exception {
+        assertEquals(new ClassFileImporter().importPackages("..HeliosProxyPackage..").isEmpty(),false,"Helios Proxy Library is not added as dependency");
 
+    }
     static ArchCondition<JavaClass> add_helios_proxy_servlet_filter_in_run_method =
             new ArchCondition<JavaClass>("add_helios_proxy_servlet_filter") {
                 @Override

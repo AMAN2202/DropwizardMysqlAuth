@@ -2,6 +2,7 @@ import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaMethod;
 import com.tngtech.archunit.core.domain.JavaMethodCall;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTag;
@@ -10,14 +11,21 @@ import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
+import org.junit.jupiter.api.Test;
 import org.slf4j.impl.StaticLoggerBinder;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ArchTag(value = "Logback_Test")
 @AnalyzeClasses(packages="org.example",importOptions = {ImportOption.DoNotIncludeJars.class,
         ImportOption.DoNotIncludeTests.class,ImportOption.DoNotIncludeArchives.class})
 public class LogbackTest {
+    @Test
+    public void isPackagePresent() throws Exception {
+        assertEquals(new ClassFileImporter().importPackages("..ch.qos.logback.classic..").isEmpty(),false,"Logback Library is not added as dependency");
+
+    }
     static DescribedPredicate<JavaClass> classesHavingLoggingMethods =
             new DescribedPredicate<JavaClass>("has a logging method") {
                 @Override
