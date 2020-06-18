@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
+  <meta content="Apache Maven Doxia Site Renderer 1.9.1" name="generator"> 
+  <title>Archunit Report</title> 
+
+  <style type="text/css">
+    <style>
+body {
+  padding: 0px 0px 10px 0px;
+}
+body, td, select, input, li{
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+code{
+  font-family: Courier, monospace;
+  font-size: 13px;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color:#36a;
+}
+a:visited  {
+  color:#47a;
+}
+a:active, a:hover {
+  color:#69c;
+}
+#legend li.externalLink {
+  background: url(../images/external.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+  background: url(../images/external.png) right center no-repeat;
+  padding-right: 18px;
+}
+#legend li.newWindow {
+  background: url(../images/newwindow.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWindow:hover {
+  background: url(../images/newwindow.png) right center no-repeat;
+  padding-right: 18px;
+}
+h2 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #999;
+  color: #900;
+  background-color: #ddd;
+  font-weight:900;
+  font-size: x-large;
+}
+h3 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #aaa;
+  color: #900;
+  background-color: #eee;
+  font-weight: normal;
+  font-size: large;
+}
+h4 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #bbb;
+  color: #900;
+  background-color: #fff;
+  font-weight: normal;
+  font-size: large;
+}
+h5 {
+  padding: 4px 4px 4px 6px;
+  color: #900;
+  font-size: medium;
+}
+p {
+  line-height: 1.3em;
+  font-size: small;
+}
+#breadcrumbs {
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  background-color: #ccc;
+}
+#leftColumn {
+  margin: 10px 0 0 5px;
+  border: 1px solid #999;
+  background-color: #eee;
+  padding-bottom: 3px; /* IE-9 scrollbar-fix */
+}
+#navcolumn h5 {
+  font-size: smaller;
+  border-bottom: 1px solid #aaaaaa;
+  padding-top: 2px;
+  color: #000;
+}
+ 
+table.bodyTable th {
+  color: white;
+  background-color: #bbb;
+  text-align: left;
+  font-weight: bold;
+}
+ 
+table.bodyTable th, table.bodyTable td {
+  font-size: 1em;
+}
+ 
+table.bodyTable tr.a {
+  background-color: #ddd;
+}
+ 
+table.bodyTable tr.b {
+  background-color: #eee;
+}
+ 
+.source {
+  border: 1px solid #999;
+}
+dl {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #aaa;
+  background-color: #ffc;
+}
+dt {
+  color: #900;
+}
+#organizationLogo img, #projectLogo img, #projectLogo span{
+  margin: 8px;
+}
+#banner {
+  border-bottom: 1px solid #fff;
+}
+.errormark, .warningmark, .donemark, .infomark {
+  background: url(../images/icon_error_sml.gif) no-repeat;
+}
+ 
+.warningmark {
+  background-image: url(../images/icon_warning_sml.gif);
+}
+ 
+.donemark {
+  background-image: url(../images/icon_success_sml.gif);
+}
+ 
+.infomark {
+  background-image: url(../images/icon_info_sml.gif);
+}
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+  background: none;
+  padding-right: 0;
+}
+ 
+body ul {
+  list-style-type: square;
+}
+ 
+#downloadbox {
+  float: right;
+  margin-left: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  border: 1px solid #999;
+  background-color: #eee;
+  width: 17.5em;
+}
+ 
+#downloadbox h5 {
+  color: #000;
+  margin: 0;
+  border-bottom: 1px solid #aaaaaa;
+  font-size: smaller;
+  padding: 0;
+  margin-top: 1em;
+}
+ 
+#downloadbox p {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+ 
+#downloadbox li {
+  text-indent: inherit;
+}
+</style>
+  </style>>
+ </head> 
+ <body class="composite"> 
+  <div id="banner"> 
+   <div class="clear"> 
+    <hr> 
+   </div> 
+  </div> <!-- Published date and version --> 
+  <div id="breadcrumbs"> 
+   <div class="xleft"> <span id="publishDate">Last Published: 2020-06-17</span> &nbsp;| <span id="projectVersion">Version: 1.0-SNAPSHOT</span> 
+   </div> 
+   <div class="xright"> 
+   </div> 
+   <div class="clear"> 
+    <hr> 
+   </div> 
+  </div> <!--Flipkart Logo--> 
+  <div id="leftColumn"> 
+   <div id="navcolumn"> <a class="poweredBy" href="https://www.flipkart.com/" title="Built by Flipkart"> <img alt="Built by Flipkart" class="poweredBy" src="images/FKlogo.png" style="width:154px;height:42px;"> </a> 
+   </div> 
+  </div> 
+  <div id="bodyColumn"> 
+   <div id="contentBox"> 
+    <script type="application/javascript">
+            //<![CDATA[
+            function toggleDisplay(elementId) {
+                var elm = document.getElementById(elementId + 'error');
+                if (elm && typeof elm.style != "undefined") {
+                    if (elm.style.display == "none") {
+                        elm.style.display = "";
+                        document.getElementById(elementId + 'off').style.display = "none";
+                        document.getElementById(elementId + 'on').style.display = "inline";
+                    } else if (elm.style.display == "") {
+                        elm.style.display = "none";
+                        document.getElementById(elementId + 'off').style.display = "inline";
+                        document.getElementById(elementId + 'on').style.display = "none";
+                    }
+                }
+            }
+
+            //]]>
+        </script> <!--ArchUnit Report--> 
+    <section> 
+     <h2><a name="Surefire_Report"></a>Archunit Report</h2> 
+    </section> 
+    <section> 
+     <h2><a name="Summary"></a>Summary</h2><a name="Summary"></a> 
+     <p>[<a href="#Summary">Summary</a>] [<a href="#parameters">Parameters List</a>] [<a href="#Test_Cases">Test Cases</a>] [<a href="#failuredetails">Failed</a>] [<a href="#warningdetails">Warning</a>]</p>
+     <br> 
+     <div id="summary">  
+      <table border="1" class="bodyTable"> 
+       <tbody>
+        <tr class="a"> 
+         <th>Status</th> 
+         <th>Total</th> 
+         <th>Tests</th> 
+         <th>Failures</th> 
+         <th>Skipped</th> 
+         <th>Success Rate</th>
+        </tr> 
+        <tr> 
+         <td> 
+          <figure>
+           <img src="images/icon_error_sml.PNG" alt="">
+          </figure>  </td> 
+         <td>11</td> 
+         <td>0</td> 
+         <td>7</td> 
+         <td>0</td> 
+         <td>0.36363637%</td> 
+        </tr> 
+       </tbody>
+      </table>
+     </div> 
+     <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p>
+     <br> 
+    </section> 
+    <section> 
+     <div id="packagelists"> 
+      <section> 
+       <table border="1" class="bodyTable"> 
+        <tbody>
+         <tr class="a"> 
+          <th>Status</th> 
+          <th>Class</th> 
+          <th>Tests</th> 
+          <th>Errors</th> 
+          <th>Failures</th> 
+          <th>Skipped</th> 
+          <th>Success Rate</th> 
+          <th>Time</th>
+         </tr> 
+         <tr class="b"> 
+          <td><a href="#Predefined Checks"> 
+            <figure>
+             <img src="images/icon_error_sml.PNG" alt="">
+            </figure> </a> </td> 
+          <td><a href="#Predefined Checks">Predefined Checks</a></td> 
+          <td>11</td> 
+          <td>0</td> 
+          <td>7</td> 
+          <td>0</td> 
+          <td>0.36363637%</td> 
+          <td>5.6811266</td> 
+         </tr> 
+         <tr class="b"> 
+          <td><a href="#External Checks"> 
+            <figure>
+             <img src="images/icon_success_sml.PNG" alt="">
+            </figure> </a> </td> 
+          <td><a href="#External Checks">External Checks</a></td> 
+          <td>0</td> 
+          <td>0</td> 
+          <td>0</td> 
+          <td>0</td> 
+          <td>NaN%</td> 
+          <td>0.0</td> 
+         </tr> 
+        </tbody>
+       </table> 
+       <br> 
+      </section>
+     </div> 
+     <br> 
+     <section> 
+      <p>Parameters used by plugin</p> 
+      <div id="parameters">
+       <section>
+        <table border="1" class="bodyTable">
+         <tbody>
+          <tr>
+           <th>Parameter Name</th>
+           <th>Value</th>
+          </tr>
+          <tr class="a">
+           <td> metricsAnnotations</td>
+           <td><pre>[com.codahale.metrics.annotation.Timed, com.codahale.metrics.annotation.Metered, com.codahale.metrics.annotation.ResponseMetered, com.codahale.metrics.annotation.ExceptionMetered] </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> controllerRequestAnnotations</td>
+           <td><pre>[javax.ws.rs.GET, javax.ws.rs.POST, javax.ws.rs.DELETE, javax.ws.rs.PUT] </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> layers</td>
+           <td><pre>{Controllers=[org.example.empApi.resources..], Services=[org.example.empApi.service..], Persistence=[org.example.empApi.db..]} </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> acessRules</td>
+           <td><pre>{Services=[Controllers], Persistence=[Services], Controllers=[]} </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> isRegisteredClassName</td>
+           <td><pre>ContextRequestFilter </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> headerNames</td>
+           <td><pre>[requestId, trace_Id] </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> filterClassName</td>
+           <td><pre>MandatoryHeadersFilter </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> clientLibrary</td>
+           <td><pre>[.*.Client$] </pre> </td>
+           <td></td>
+          </tr>
+          <tr class="a">
+           <td> daoList</td>
+           <td><pre>[.*DAO*.] </pre> </td>
+           <td></td>
+          </tr>
+         </tbody>
+        </table>
+       </section>
+      </div> <a name="parameters"></a> 
+     </section> 
+     <h2><a name="Test_Cases"></a>Test Cases</h2><a name="Test_Cases"></a> 
+     <p>[<a href="#Summary">Summary</a>] [<a href="#parameters">Parameters List</a>] [<a href="#Test_Cases">Test Cases</a>] [<a href="#failuredetails">Failed</a>] [<a href="#warningdetails">Warning</a>]</p>
+     <br> 
+     <div id="tests"> 
+      <section> 
+       <h3>External Checks</h3><a name="External Checks"></a> 
+       <table border="1" class="bodyTable" width="100%"> 
+       </table> 
+      </section>
+      <br>
+      <section> 
+       <h3>Predefined Checks</h3><a name="Predefined Checks"></a> 
+       <table border="1" class="bodyTable" width="100%"> 
+        <tbody>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.CryptexTest">org.example.rules.CryptexTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.CryptexTest');"><span style="display:inline;" id="org.example.rules.CryptexTestoff"> + </span><span style="display:none;" id="org.example.rules.CryptexTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.4326974</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.CryptexTesterror" style="display:none;"> 
+            <div> 
+             <pre>org.opentest4j.AssertionFailedError: Cryptex is not added as dependency ==&gt; expected: <true>
+                but was: 
+               <false></false>
+              </true></pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.HeadersTest">org.example.rules.HeadersTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.HeadersTest');"><span style="display:inline;" id="org.example.rules.HeadersTestoff"> + </span><span style="display:none;" id="org.example.rules.HeadersTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>1.2356987</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.HeadersTesterror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.Exception: MandatoryHeadersFilter is not being registered in application class
+Method deleteEmloyee is not having @HeaderParam("requestId")</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.HeliosProxyTest">org.example.rules.HeliosProxyTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.HeliosProxyTest');"><span style="display:inline;" id="org.example.rules.HeliosProxyTestoff"> + </span><span style="display:none;" id="org.example.rules.HeliosProxyTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.01072</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.HeliosProxyTesterror" style="display:none;"> 
+            <div> 
+             <pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: <true>
+                but was: 
+               <false></false>
+              </true></pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.HystrixTest">org.example.rules.HystrixTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.HystrixTest');"><span style="display:inline;" id="org.example.rules.HystrixTestoff"> + </span><span style="display:none;" id="org.example.rules.HystrixTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.3246077</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.HystrixTesterror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have a Api call or have a DAO should method must use @Hystrixcommand annotations' was violated (8 times):
+Method org.example.DropwizardAuthApplication.run(org.example.DropwizardAuthConfiguration, io.dropwizard.setup.Environment) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.addEmployee(org.example.model.Employee) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.deleteEmployee(long) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.getAllEmployee() is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.getEmployee(long) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.updateEmployee(org.example.model.Employee) is not using @HystrixCommand annotation
+Method org.example.service.UserService.addUser(org.example.model.User) is not using @HystrixCommand annotation
+Method org.example.service.UserService.getUser(java.lang.String) is not using @HystrixCommand annotation</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_success_sml.PNG" alt="">
+           </figure></td> 
+          <td><a name="org.example.rules.InheritanceCheck"></a>org.example.rules.InheritanceCheck</td> 
+          <td>0.5316444</td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.LayerCheck">org.example.rules.LayerCheck</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.LayerCheck');"><span style="display:inline;" id="org.example.rules.LayerCheckoff"> + </span><span style="display:none;" id="org.example.rules.LayerCheckon"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.2454718</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.LayerCheckerror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'Layered architecture consisting of
+layer 'Controllers' ('org.example.empApi.resources..')
+layer 'Services' ('org.example.empApi.service..')
+layer 'Persistence' ('org.example.empApi.db..')
+where layer 'Services' may only be accessed by layers ['Controllers']
+where layer 'Persistence' may only be accessed by layers ['Services']
+where layer 'Controllers' may not be accessed by any layer' was violated (3 times):
+Layer 'Controllers' is empty
+Layer 'Persistence' is empty
+Layer 'Services' is empty</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_success_sml.PNG" alt="">
+           </figure></td> 
+          <td><a name="org.example.rules.LogbackTest"></a>org.example.rules.LogbackTest</td> 
+          <td>1.0737468</td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.MetricsTest">org.example.rules.MetricsTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.MetricsTest');"><span style="display:inline;" id="org.example.rules.MetricsTestoff"> + </span><span style="display:none;" id="org.example.rules.MetricsTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.3366396</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.MetricsTesterror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that reside in any package ['..resources..'] should method must use annotations metrics' was violated (6 times):
+Method org.example.resources.EmployeeResource.addEmployee(org.example.model.Employee) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.deleteEmloyee(int) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getAllEmployee() is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getEmployee(long) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getEmployee(long, org.example.model.Employee) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.HelloDropWizardResource.sayHello(java.util.Optional) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_success_sml.PNG" alt="">
+           </figure></td> 
+          <td><a name="org.example.rules.PackageContainmentCheck"></a>org.example.rules.PackageContainmentCheck</td> 
+          <td>0.0162745</td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_error_sml.PNG" alt="">
+           </figure></td> 
+          <td><a href="#org.example.rules.Registered">org.example.rules.Registered</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('org.example.rules.Registered');"><span style="display:inline;" id="org.example.rules.Registeredoff"> + </span><span style="display:none;" id="org.example.rules.Registeredon"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>1.1868387</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="org.example.rules.Registerederror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name containing 'Application' should   register in the given class' was violated (1 times):
+ContextRequestFilter is not being registered in application class</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="images/icon_success_sml.PNG" alt="">
+           </figure></td> 
+          <td><a name="org.example.rules.TestCheck"></a>org.example.rules.TestCheck</td> 
+          <td>0.2867874</td>
+         </tr>
+        </tbody>
+       </table> 
+      </section>
+      <br>
+     </div> 
+    </section> 
+    <div id="failuredetails"> <a name="failuredetails"></a> 
+     <h2>Failure Details<a name="Failure_Details"></a></h2><a name="Failure_Details"></a> 
+     <p>[<a href="#Summary">Summary</a>] [<a href="#parameters">Parameters List</a>] [<a href="#Test_Cases">Test Cases</a>] [<a href="#failuredetails">Failed</a>] [<a href="#warningdetails">Warning</a>]</p>
+     <br> 
+     <table border="1" class="bodyTable"> 
+      <tbody>
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.Registered"></a>org.example.rules.Registered</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name containing 'Application' should   register in the given class' was violated (1 times):
+ContextRequestFilter is not being registered in application class</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.CryptexTest"></a>org.example.rules.CryptexTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>org.opentest4j.AssertionFailedError: Cryptex is not added as dependency ==&gt; expected: <true>
+            but was: 
+           <false></false>
+          </true></pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.HeadersTest"></a>org.example.rules.HeadersTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.Exception: MandatoryHeadersFilter is not being registered in application class
+Method deleteEmloyee is not having @HeaderParam("requestId")</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.MetricsTest"></a>org.example.rules.MetricsTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that reside in any package ['..resources..'] should method must use annotations metrics' was violated (6 times):
+Method org.example.resources.EmployeeResource.addEmployee(org.example.model.Employee) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.deleteEmloyee(int) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getAllEmployee() is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getEmployee(long) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.EmployeeResource.getEmployee(long, org.example.model.Employee) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
+Method org.example.resources.HelloDropWizardResource.sayHello(java.util.Optional) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.HeliosProxyTest"></a>org.example.rules.HeliosProxyTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: <true>
+            but was: 
+           <false></false>
+          </true></pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.HystrixTest"></a>org.example.rules.HystrixTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have a Api call or have a DAO should method must use @Hystrixcommand annotations' was violated (8 times):
+Method org.example.DropwizardAuthApplication.run(org.example.DropwizardAuthConfiguration, io.dropwizard.setup.Environment) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.addEmployee(org.example.model.Employee) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.deleteEmployee(long) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.getAllEmployee() is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.getEmployee(long) is not using @HystrixCommand annotation
+Method org.example.service.EmployeeService.updateEmployee(org.example.model.Employee) is not using @HystrixCommand annotation
+Method org.example.service.UserService.addUser(org.example.model.User) is not using @HystrixCommand annotation
+Method org.example.service.UserService.getUser(java.lang.String) is not using @HystrixCommand annotation</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="images/icon_error_sml.PNG" alt=""></td> 
+        <td><a name="org.example.rules.LayerCheck"></a>org.example.rules.LayerCheck</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'Layered architecture consisting of
+layer 'Controllers' ('org.example.empApi.resources..')
+layer 'Services' ('org.example.empApi.service..')
+layer 'Persistence' ('org.example.empApi.db..')
+where layer 'Services' may only be accessed by layers ['Controllers']
+where layer 'Persistence' may only be accessed by layers ['Services']
+where layer 'Controllers' may not be accessed by any layer' was violated (3 times):
+Layer 'Controllers' is empty
+Layer 'Persistence' is empty
+Layer 'Services' is empty</pre></td> 
+       </tr> 
+      </tbody>
+     </table>
+     <br> 
+    </div> 
+    <div id="warningdetails"> <a name="warningdetails"></a> 
+     <h2>Warning Details<a name="Warning_Details"></a></h2><a name="Failure_Details"></a> 
+     <p>[<a href="#Summary">Summary</a>] [<a href="#parameters">Parameters List</a>] [<a href="#Test_Cases">Test Cases</a>] [<a href="#failuredetails">Failed</a>] [<a href="#warningdetails">Warning</a>]</p>
+     <br> 
+     <table border="1" class="bodyTable"> 
+     </table>
+     <br> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="clear"> 
+   <hr> 
+  </div> 
+  <div id="footer"> 
+   <div class="xright">
+     Copyright © 2020.. 
+   </div> 
+   <div class="clear"> 
+    <hr> 
+   </div> 
+  </div>  
+ </body>
+</html>
