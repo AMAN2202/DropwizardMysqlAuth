@@ -53,8 +53,8 @@ public class EmployeeResource {
         } catch (Exception e) {
             return Response.status(404).entity(new ErrorMessage("Employee not found")).build();
         }
-        long updated_salary = Long.valueOf(new SalaryService(employee.getSalary()).execute());
-        employee.setSalary(updated_salary);
+//        long updated_salary = Long.valueOf(new SalaryService().execute());
+//        employee.setSalary(updated_salary);
         return Response.ok(employee).build();
     }
 
