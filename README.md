@@ -1,17 +1,25 @@
-# Table of contents
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
+# DropwizardAuth
 
-## This is the introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
+How to start the DropwizardAuth application
+---
 
-## Some paragraph <a name="paragraph1"></a>
-The first paragraph text
+1. Run `mvn clean install` to build your application
+1. Start application with `java -jar target/DropwizardAuth-1.0-SNAPSHOT.jar server config.yml`
+1. To check that your application is running enter url `http://localhost:8080`
 
-### Sub paragraph <a name="subparagraph1"></a>
-This is a sub paragraph, formatted in heading 3 style
+Health Check
+---
 
-## Another paragraph <a name="paragraph2"></a>
-The second paragraph text
+To see your applications health enter url `http://localhost:8081/healthcheck`
+
+Sql schema for user and roles   
+
+    user
+      email varcahar(30) primary key
+      password varchar(30)
+      
+    roles 
+      email varchar(30) forign key 
+      role varchar(30)  
+        
+
