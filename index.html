@@ -4,189 +4,191 @@
   <meta charset="UTF-8"> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
   <meta content="Apache Maven Doxia Site Renderer 1.9.1" name="generator"> 
-  <title>Archunit Report</title>
-     <style type="text/css">
-         <style>
-         body {
-             padding: 0px 0px 10px 0px;
-         }
-         body, td, select, input, li{
-             font-family: Verdana, Helvetica, Arial, sans-serif;
-             font-size: 13px;
-         }
-         code{
-             font-family: Courier, monospace;
-             font-size: 13px;
-         }
-         a {
-             text-decoration: none;
-         }
-         a:link {
-             color:#36a;
-         }
-         a:visited  {
-             color:#47a;
-         }
-         a:active, a:hover {
-             color:#69c;
-         }
-         #legend li.externalLink {
-             background: url(../images/external.png) left top no-repeat;
-             padding-left: 18px;
-         }
-         a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
-             background: url(../images/external.png) right center no-repeat;
-             padding-right: 18px;
-         }
-         #legend li.newWindow {
-             background: url(../images/newwindow.png) left top no-repeat;
-             padding-left: 18px;
-         }
-         a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWindow:hover {
-             background: url(../images/newwindow.png) right center no-repeat;
-             padding-right: 18px;
-         }
-         h2 {
-             padding: 4px 4px 4px 6px;
-             border: 1px solid #999;
-             color: #900;
-             background-color: #ddd;
-             font-weight:900;
-             font-size: x-large;
-         }
-         h3 {
-             padding: 4px 4px 4px 6px;
-             border: 1px solid #aaa;
-             color: #900;
-             background-color: #eee;
-             font-weight: normal;
-             font-size: large;
-         }
-         h4 {
-             padding: 4px 4px 4px 6px;
-             border: 1px solid #bbb;
-             color: #900;
-             background-color: #fff;
-             font-weight: normal;
-             font-size: large;
-         }
-         h5 {
-             padding: 4px 4px 4px 6px;
-             color: #900;
-             font-size: medium;
-         }
-         p {
-             line-height: 1.3em;
-             font-size: small;
-         }
-         #breadcrumbs {
-             border-top: 1px solid #aaa;
-             border-bottom: 1px solid #aaa;
-             background-color: #ccc;
-         }
-         #leftColumn {
-             margin: 10px 0 0 5px;
-             border: 1px solid #999;
-             background-color: #eee;
-             padding-bottom: 3px; /* IE-9 scrollbar-fix */
-         }
-         #navcolumn h5 {
-             font-size: smaller;
-             border-bottom: 1px solid #aaaaaa;
-             padding-top: 2px;
-             color: #000;
-         }
+  <title>Archunit Report</title> 
+  <link href="./maven-theme.css" rel="stylesheet"> 
+  <link href="./site.css" rel="stylesheet"> 
+  <link href="./print.css" media="print" rel="stylesheet"> 
+  <style>
+body {
+  padding: 0px 0px 10px 0px;
+}
+body, td, select, input, li{
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+code{
+  font-family: Courier, monospace;
+  font-size: 13px;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color:#36a;
+}
+a:visited  {
+  color:#47a;
+}
+a:active, a:hover {
+  color:#69c;
+}
+#legend li.externalLink {
+  background: url(../images/external.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+  background: url(../images/external.png) right center no-repeat;
+  padding-right: 18px;
+}
+#legend li.newWindow {
+  background: url(../images/newwindow.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWindow:hover {
+  background: url(../images/newwindow.png) right center no-repeat;
+  padding-right: 18px;
+}
+h2 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #999;
+  color: #900;
+  background-color: #ddd;
+  font-weight:900;
+  font-size: x-large;
+}
+h3 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #aaa;
+  color: #900;
+  background-color: #eee;
+  font-weight: normal;
+  font-size: large;
+}
+h4 {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #bbb;
+  color: #900;
+  background-color: #fff;
+  font-weight: normal;
+  font-size: large;
+}
+h5 {
+  padding: 4px 4px 4px 6px;
+  color: #900;
+  font-size: medium;
+}
+p {
+  line-height: 1.3em;
+  font-size: small;
+}
+#breadcrumbs {
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  background-color: #ccc;
+}
+#leftColumn {
+  margin: 10px 0 0 5px;
+  border: 1px solid #999;
+  background-color: #eee;
+  padding-bottom: 3px; /* IE-9 scrollbar-fix */
+}
+#navcolumn h5 {
+  font-size: smaller;
+  border-bottom: 1px solid #aaaaaa;
+  padding-top: 2px;
+  color: #000;
+}
 
-         table.bodyTable th {
-             color: white;
-             background-color: #bbb;
-             text-align: left;
-             font-weight: bold;
-         }
+table.bodyTable th {
+  color: white;
+  background-color: #bbb;
+  text-align: left;
+  font-weight: bold;
+}
 
-         table.bodyTable th, table.bodyTable td {
-             font-size: 1em;
-         }
+table.bodyTable th, table.bodyTable td {
+  font-size: 1em;
+}
 
-         table.bodyTable tr.a {
-             background-color: #ddd;
-         }
+table.bodyTable tr.a {
+  background-color: #ddd;
+}
 
-         table.bodyTable tr.b {
-             background-color: #eee;
-         }
+table.bodyTable tr.b {
+  background-color: #eee;
+}
 
-         .source {
-             border: 1px solid #999;
-         }
-         dl {
-             padding: 4px 4px 4px 6px;
-             border: 1px solid #aaa;
-             background-color: #ffc;
-         }
-         dt {
-             color: #900;
-         }
-         #organizationLogo img, #projectLogo img, #projectLogo span{
-             margin: 8px;
-         }
-         #banner {
-             border-bottom: 1px solid #fff;
-         }
-         .errormark, .warningmark, .donemark, .infomark {
-             background: url(../images/icon_error_sml.gif) no-repeat;
-         }
+.source {
+  border: 1px solid #999;
+}
+dl {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #aaa;
+  background-color: #ffc;
+}
+dt {
+  color: #900;
+}
+#organizationLogo img, #projectLogo img, #projectLogo span{
+  margin: 8px;
+}
+#banner {
+  border-bottom: 1px solid #fff;
+}
+.errormark, .warningmark, .donemark, .infomark {
+  background: url(../images/icon_error_sml.gif) no-repeat;
+}
 
-         .warningmark {
-             background-image: url(../images/icon_warning_sml.gif);
-         }
+.warningmark {
+  background-image: url(../images/icon_warning_sml.gif);
+}
 
-         .donemark {
-             background-image: url(../images/icon_success_sml.gif);
-         }
+.donemark {
+  background-image: url(../images/icon_success_sml.gif);
+}
 
-         .infomark {
-             background-image: url(../images/icon_info_sml.gif);
-         }
-         a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
-             background: none;
-             padding-right: 0;
-         }
+.infomark {
+  background-image: url(../images/icon_info_sml.gif);
+}
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+  background: none;
+  padding-right: 0;
+}
 
-         body ul {
-             list-style-type: square;
-         }
+body ul {
+  list-style-type: square;
+}
 
-         #downloadbox {
-             float: right;
-             margin-left: 2em;
-             padding-left: 1em;
-             padding-right: 1em;
-             padding-bottom: 1em;
-             border: 1px solid #999;
-             background-color: #eee;
-             width: 17.5em;
-         }
+#downloadbox {
+  float: right;
+  margin-left: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  border: 1px solid #999;
+  background-color: #eee;
+  width: 17.5em;
+}
 
-         #downloadbox h5 {
-             color: #000;
-             margin: 0;
-             border-bottom: 1px solid #aaaaaa;
-             font-size: smaller;
-             padding: 0;
-             margin-top: 1em;
-         }
+#downloadbox h5 {
+  color: #000;
+  margin: 0;
+  border-bottom: 1px solid #aaaaaa;
+  font-size: smaller;
+  padding: 0;
+  margin-top: 1em;
+}
 
-         #downloadbox p {
-             margin-top: 1em;
-             margin-bottom: 0;
-         }
+#downloadbox p {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
 
-         #downloadbox li {
-             text-indent: inherit;
-         }
-     </style>
- </head> 
+#downloadbox li {
+  text-indent: inherit;
+}
+</style>
+ </head>  
  <body class="composite"> 
   <div id="banner"> 
    <div class="clear"> 
@@ -203,7 +205,7 @@
    </div> 
   </div> <!--Flipkart Logo--> 
   <div id="leftColumn"> 
-   <div id="navcolumn"> <a class="poweredBy" href="https://www.flipkart.com/" title="Built by Flipkart"> <img alt="Built by Flipkart" class="poweredBy" src="https://i.ibb.co/hd7bQXJ/FKlogo.png" style="width:154px;height:42px;"> </a>
+   <div id="navcolumn"> <a class="poweredBy" href="https://www.flipkart.com/" title="Built by Flipkart"> <img alt="Built by Flipkart" class="poweredBy" src="https://i.ibb.co/hd7bQXJ/FKlogo.png" style="width:154px;height:42px;"> </a> 
    </div> 
   </div> 
   <div id="bodyColumn"> 
@@ -250,11 +252,11 @@
           <figure>
            <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
           </figure>  </td> 
-         <td>11</td> 
+         <td>12</td> 
          <td>0</td> 
-         <td>6</td> 
+         <td>8</td> 
          <td>0</td> 
-         <td>0.45454547%</td> 
+         <td>33.333336%</td> 
         </tr> 
        </tbody>
       </table>
@@ -283,17 +285,17 @@
              <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
             </figure> </a> </td> 
           <td><a href="#Predefined Checks">Predefined Checks</a></td> 
-          <td>11</td> 
+          <td>12</td> 
           <td>0</td> 
-          <td>6</td> 
+          <td>8</td> 
           <td>0</td> 
-          <td>0.45454547%</td> 
-          <td>5.041689</td> 
+          <td>33.333336%</td> 
+          <td>4.173531</td> 
          </tr> 
          <tr class="b"> 
           <td><a href="#External Checks"> 
             <figure>
-             <img src="https://i.ibb.co/MsBPZBp/icon-warning-sml.gif" alt="">
+             <img src="https://i.ibb.co/vJ8m5Y5/icon-success-sml.gif" alt="">
             </figure> </a> </td> 
           <td><a href="#External Checks">External Checks</a></td> 
           <td>0</td> 
@@ -331,12 +333,12 @@
           </tr>
           <tr class="a">
            <td> layers</td>
-           <td><pre>{Controllers=[org.example.empApi.resources..], Services=[org.example.empApi.service..], Persistence=[org.example.empApi.db..]} </pre> </td>
+           <td><pre>{Controllers=WList(list=[org.example.empApi.resources..]), Services=WList(list=[org.example.empApi.service..]), Persistence=WList(list=[org.example.empApi.db..])} </pre> </td>
            <td></td>
           </tr>
           <tr class="a">
-           <td> acessRules</td>
-           <td><pre>{Services=[Controllers], Persistence=[Services], Controllers=[]} </pre> </td>
+           <td> accessRules</td>
+           <td><pre>{Services=WList(list=[Controllers]), Persistence=WList(list=[Services]), Controllers=WList(list=[])} </pre> </td>
            <td></td>
           </tr>
           <tr class="a">
@@ -388,21 +390,20 @@
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.CryptexTest">org.example.rules.CryptexTest</a>
+          <td><a href="#com.flipkart.fpg.rules.CryptexTest">com.flipkart.fpg.rules.CryptexTest</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.CryptexTest');"><span style="display:inline;" id="org.example.rules.CryptexTestoff"> + </span><span style="display:none;" id="org.example.rules.CryptexTeston"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.CryptexTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.CryptexTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.CryptexTeston"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.4560626</td>
+          <td>0.0087148</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.CryptexTesterror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.CryptexTesterror" style="display:none;"> 
             <div> 
-             <pre>org.opentest4j.AssertionFailedError: Cryptex is not added as dependency ==&gt; expected: <true>
-                but was: 
-               <false></false>
-              </true></pre>
+             <pre>java.lang.Exception: Cryptex Client dependency not added
+Cryptex Bundle dependency not added
+</pre>
             </div>
            </div></td> 
           <td></td>
@@ -412,18 +413,39 @@
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.HeadersTest">org.example.rules.HeadersTest</a>
+          <td><a href="#com.flipkart.fpg.rules.DynamicBucketTest">com.flipkart.fpg.rules.DynamicBucketTest</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.HeadersTest');"><span style="display:inline;" id="org.example.rules.HeadersTestoff"> + </span><span style="display:none;" id="org.example.rules.HeadersTeston"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.DynamicBucketTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.DynamicBucketTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.DynamicBucketTeston"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.9926939</td>
+          <td>0.0200424</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.HeadersTesterror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.DynamicBucketTesterror" style="display:none;"> 
             <div> 
-             <pre>java.lang.Exception: MandatoryHeadersFilter is not being registered in application class
+             <pre>java.lang.Exception: No dependency for dynamic bucket is present</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
+           </figure></td> 
+          <td><a href="#com.flipkart.fpg.rules.HeadersTest">com.flipkart.fpg.rules.HeadersTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.HeadersTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.HeadersTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.HeadersTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.6119082</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="com.flipkart.fpg.rules.HeadersTesterror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: MandatoryHeadersFilter is not being registered in application class
 Method getEmployee is not having @HeaderParam("requestId")</pre>
             </div>
            </div></td> 
@@ -434,21 +456,18 @@ Method getEmployee is not having @HeaderParam("requestId")</pre>
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.HeliosProxyTest">org.example.rules.HeliosProxyTest</a>
+          <td><a href="#com.flipkart.fpg.rules.HeliosProxyTest">com.flipkart.fpg.rules.HeliosProxyTest</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.HeliosProxyTest');"><span style="display:inline;" id="org.example.rules.HeliosProxyTestoff"> + </span><span style="display:none;" id="org.example.rules.HeliosProxyTeston"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.HeliosProxyTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.HeliosProxyTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.HeliosProxyTeston"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.0085123</td>
+          <td>0.005828</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.HeliosProxyTesterror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.HeliosProxyTesterror" style="display:none;"> 
             <div> 
-             <pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: <true>
-                but was: 
-               <false></false>
-              </true></pre>
+             <pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;</pre>
             </div>
            </div></td> 
           <td></td>
@@ -458,16 +477,16 @@ Method getEmployee is not having @HeaderParam("requestId")</pre>
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.HystrixTest">org.example.rules.HystrixTest</a>
+          <td><a href="#com.flipkart.fpg.rules.HystrixTest">com.flipkart.fpg.rules.HystrixTest</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.HystrixTest');"><span style="display:inline;" id="org.example.rules.HystrixTestoff"> + </span><span style="display:none;" id="org.example.rules.HystrixTeston"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.HystrixTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.HystrixTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.HystrixTeston"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.3187227</td>
+          <td>0.1823054</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.HystrixTesterror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.HystrixTesterror" style="display:none;"> 
             <div> 
              <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have a Api call or have a DAO should method must use @Hystrixcommand annotations' was violated (8 times):
 Method org.example.authApi.UserService.addUser(org.example.authApi.User) is not using @HystrixCommand annotation
@@ -487,40 +506,62 @@ Method org.example.empApi.service.ExternalApiConsumerService1.fun() is not using
            <figure>
             <img src="https://i.ibb.co/vJ8m5Y5/icon-success-sml.gif" alt="">
            </figure></td> 
-          <td><a name="org.example.rules.InheritanceCheck"></a>org.example.rules.InheritanceCheck</td> 
-          <td>0.700617</td>
-         </tr>
-         <tr class="a"> 
-          <td width="4%">
-           <figure>
-            <img src="https://i.ibb.co/MsBPZBp/icon-warning-sml.gif" alt="">
-           </figure></td> 
-          <td><a name="org.example.rules.LayerCheck"></a>org.example.rules.LayerCheck</td> 
-          <td>0.2535615</td>
-         </tr>
-         <tr class="a"> 
-          <td width="4%">
-           <figure>
-            <img src="https://i.ibb.co/MsBPZBp/icon-warning-sml.gif" alt="">
-           </figure></td> 
-          <td><a name="org.example.rules.LogbackTest"></a>org.example.rules.LogbackTest</td> 
-          <td>0.7978868</td>
+          <td><a name="com.flipkart.fpg.rules.InheritanceCheck"></a>com.flipkart.fpg.rules.InheritanceCheck</td> 
+          <td>0.5362517</td>
          </tr>
          <tr class="a"> 
           <td width="4%">
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.MetricsTest">org.example.rules.MetricsTest</a>
+          <td><a href="#com.flipkart.fpg.rules.LayerCheck">com.flipkart.fpg.rules.LayerCheck</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.MetricsTest');"><span style="display:inline;" id="org.example.rules.MetricsTestoff"> + </span><span style="display:none;" id="org.example.rules.MetricsTeston"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.LayerCheck');"><span style="display:inline;" id="com.flipkart.fpg.rules.LayerCheckoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.LayerCheckon"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.2885954</td>
+          <td>0.1862574</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.MetricsTesterror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.LayerCheckerror" style="display:none;"> 
+            <div> 
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'Layered architecture consisting of
+layer 'Controllers' ('org.example.empApi.resources..')
+layer 'Services' ('org.example.empApi.service..')
+layer 'Persistence' ('org.example.empApi.db..')
+where layer 'Services' may only be accessed by layers ['Controllers']
+where layer 'Persistence' may only be accessed by layers ['Services']
+where layer 'Controllers' may not be accessed by any layer' was violated (3 times):
+Constructor &lt;org.example.empApi.service.EmployeeService.&lt;init&gt;(org.example.empApi.db.EmployeeDAO, org.example.empApi.resources.EmployeeResource)&gt; has parameter of type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)
+Field &lt;org.example.empApi.service.EmployeeService.employeeResource&gt; has type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)
+Method &lt;org.example.empApi.service.EmployeeService.setEmployeeResource(org.example.empApi.resources.EmployeeResource)&gt; has parameter of type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)</pre>
+            </div>
+           </div></td> 
+          <td></td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="https://i.ibb.co/vJ8m5Y5/icon-success-sml.gif" alt="">
+           </figure></td> 
+          <td><a name="com.flipkart.fpg.rules.LogbackTest"></a>com.flipkart.fpg.rules.LogbackTest</td> 
+          <td>2.0433116</td>
+         </tr>
+         <tr class="a"> 
+          <td width="4%">
+           <figure>
+            <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
+           </figure></td> 
+          <td><a href="#com.flipkart.fpg.rules.MetricsTest">com.flipkart.fpg.rules.MetricsTest</a>
+           <div class="detailToggle" style="display:inline">
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.MetricsTest');"><span style="display:inline;" id="com.flipkart.fpg.rules.MetricsTestoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.MetricsTeston"> - </span>[ Detail ]</a>
+           </div></td> 
+          <td>0.1626536</td>
+         </tr>
+         <tr class="a"> 
+          <td></td> 
+          <td> 
+           <div id="com.flipkart.fpg.rules.MetricsTesterror" style="display:none;"> 
             <div> 
              <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that reside in any package ['..resources..'] should method must use annotations metrics' was violated (6 times):
 Method org.example.empApi.resources.EmployeeResource$HelloDropWizardResource.sayHello(java.util.Optional) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
@@ -536,28 +577,28 @@ Method org.example.empApi.resources.EmployeeResource.getEmployee(long, org.examp
          <tr class="a"> 
           <td width="4%">
            <figure>
-            <img src="https://i.ibb.co/MsBPZBp/icon-warning-sml.gif" alt="">
+            <img src="https://i.ibb.co/vJ8m5Y5/icon-success-sml.gif" alt="">
            </figure></td> 
-          <td><a name="org.example.rules.PackageContainmentCheck"></a>org.example.rules.PackageContainmentCheck</td> 
-          <td>0.0121405</td>
+          <td><a name="com.flipkart.fpg.rules.PackageContainmentCheck"></a>com.flipkart.fpg.rules.PackageContainmentCheck</td> 
+          <td>0.0010658</td>
          </tr>
          <tr class="a"> 
           <td width="4%">
            <figure>
             <img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt="">
            </figure></td> 
-          <td><a href="#org.example.rules.Registered">org.example.rules.Registered</a>
+          <td><a href="#com.flipkart.fpg.rules.Registered">com.flipkart.fpg.rules.Registered</a>
            <div class="detailToggle" style="display:inline">
-            <a href="javascript:toggleDisplay('org.example.rules.Registered');"><span style="display:inline;" id="org.example.rules.Registeredoff"> + </span><span style="display:none;" id="org.example.rules.Registeredon"> - </span>[ Detail ]</a>
+            <a href="javascript:toggleDisplay('com.flipkart.fpg.rules.Registered');"><span style="display:inline;" id="com.flipkart.fpg.rules.Registeredoff"> + </span><span style="display:none;" id="com.flipkart.fpg.rules.Registeredon"> - </span>[ Detail ]</a>
            </div></td> 
-          <td>0.9427253</td>
+          <td>0.2467046</td>
          </tr>
          <tr class="a"> 
           <td></td> 
           <td> 
-           <div id="org.example.rules.Registerederror" style="display:none;"> 
+           <div id="com.flipkart.fpg.rules.Registerederror" style="display:none;"> 
             <div> 
-             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name containing 'Application' should   register in the given class' was violated (1 times):
+             <pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name ending with 'Application' should   register in the given class' was violated (1 times):
 ContextRequestFilter is not being registered in application class</pre>
             </div>
            </div></td> 
@@ -566,10 +607,10 @@ ContextRequestFilter is not being registered in application class</pre>
          <tr class="a"> 
           <td width="4%">
            <figure>
-            <img src="https://i.ibb.co/MsBPZBp/icon-warning-sml.gif" alt="">
+            <img src="https://i.ibb.co/vJ8m5Y5/icon-success-sml.gif" alt="">
            </figure></td> 
-          <td><a name="org.example.rules.TestCheck"></a>org.example.rules.TestCheck</td> 
-          <td>0.2701708</td>
+          <td><a name="com.flipkart.fpg.rules.TestCheck"></a>com.flipkart.fpg.rules.TestCheck</td> 
+          <td>0.1684874</td>
          </tr>
         </tbody>
        </table> 
@@ -585,61 +626,7 @@ ContextRequestFilter is not being registered in application class</pre>
       <tbody>
        <tr class="b"> 
         <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.Registered"></a>org.example.rules.Registered</td>
-       </tr> 
-       <tr class="a"> 
-        <td></td> 
-        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name containing 'Application' should   register in the given class' was violated (1 times):
-ContextRequestFilter is not being registered in application class</pre></td> 
-       </tr> 
-       <tr class="b"> 
-        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.CryptexTest"></a>org.example.rules.CryptexTest</td>
-       </tr> 
-       <tr class="a"> 
-        <td></td> 
-        <td><pre>org.opentest4j.AssertionFailedError: Cryptex is not added as dependency ==&gt; expected: <true>
-            but was: 
-           <false></false>
-          </true></pre></td> 
-       </tr> 
-       <tr class="b"> 
-        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.HeadersTest"></a>org.example.rules.HeadersTest</td>
-       </tr> 
-       <tr class="a"> 
-        <td></td> 
-        <td><pre>java.lang.Exception: MandatoryHeadersFilter is not being registered in application class
-Method getEmployee is not having @HeaderParam("requestId")</pre></td> 
-       </tr> 
-       <tr class="b"> 
-        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.MetricsTest"></a>org.example.rules.MetricsTest</td>
-       </tr> 
-       <tr class="a"> 
-        <td></td> 
-        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that reside in any package ['..resources..'] should method must use annotations metrics' was violated (6 times):
-Method org.example.empApi.resources.EmployeeResource$HelloDropWizardResource.sayHello(java.util.Optional) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
-Method org.example.empApi.resources.EmployeeResource.addEmployee(org.example.empApi.model.Employee) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
-Method org.example.empApi.resources.EmployeeResource.deleteEmloyee(int) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
-Method org.example.empApi.resources.EmployeeResource.getAllEmployee() is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
-Method org.example.empApi.resources.EmployeeResource.getEmployee(long) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
-Method org.example.empApi.resources.EmployeeResource.getEmployee(long, org.example.empApi.model.Employee) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]</pre></td> 
-       </tr> 
-       <tr class="b"> 
-        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.HeliosProxyTest"></a>org.example.rules.HeliosProxyTest</td>
-       </tr> 
-       <tr class="a"> 
-        <td></td> 
-        <td><pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: <true>
-            but was: 
-           <false></false>
-          </true></pre></td> 
-       </tr> 
-       <tr class="b"> 
-        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
-        <td><a name="org.example.rules.HystrixTest"></a>org.example.rules.HystrixTest</td>
+        <td><a name="com.flipkart.fpg.rules.HystrixTest"></a>com.flipkart.fpg.rules.HystrixTest</td>
        </tr> 
        <tr class="a"> 
         <td></td> 
@@ -652,6 +639,81 @@ Method org.example.empApi.service.EmployeeService.getAllEmployee() is not using 
 Method org.example.empApi.service.EmployeeService.getEmployee(long) is not using @HystrixCommand annotation
 Method org.example.empApi.service.EmployeeService.updateEmployee(org.example.empApi.model.Employee) is not using @HystrixCommand annotation
 Method org.example.empApi.service.ExternalApiConsumerService1.fun() is not using @HystrixCommand annotation</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.Registered"></a>com.flipkart.fpg.rules.Registered</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name ending with 'Application' should   register in the given class' was violated (1 times):
+ContextRequestFilter is not being registered in application class</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.DynamicBucketTest"></a>com.flipkart.fpg.rules.DynamicBucketTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.Exception: No dependency for dynamic bucket is present</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.HeadersTest"></a>com.flipkart.fpg.rules.HeadersTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: MandatoryHeadersFilter is not being registered in application class
+Method getEmployee is not having @HeaderParam("requestId")</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.HeliosProxyTest"></a>com.flipkart.fpg.rules.HeliosProxyTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>org.opentest4j.AssertionFailedError: Helios Proxy is not added as dependency ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.LayerCheck"></a>com.flipkart.fpg.rules.LayerCheck</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'Layered architecture consisting of
+layer 'Controllers' ('org.example.empApi.resources..')
+layer 'Services' ('org.example.empApi.service..')
+layer 'Persistence' ('org.example.empApi.db..')
+where layer 'Services' may only be accessed by layers ['Controllers']
+where layer 'Persistence' may only be accessed by layers ['Services']
+where layer 'Controllers' may not be accessed by any layer' was violated (3 times):
+Constructor &lt;org.example.empApi.service.EmployeeService.&lt;init&gt;(org.example.empApi.db.EmployeeDAO, org.example.empApi.resources.EmployeeResource)&gt; has parameter of type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)
+Field &lt;org.example.empApi.service.EmployeeService.employeeResource&gt; has type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)
+Method &lt;org.example.empApi.service.EmployeeService.setEmployeeResource(org.example.empApi.resources.EmployeeResource)&gt; has parameter of type &lt;org.example.empApi.resources.EmployeeResource&gt; in (EmployeeService.java:0)</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.CryptexTest"></a>com.flipkart.fpg.rules.CryptexTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.Exception: Cryptex Client dependency not added
+Cryptex Bundle dependency not added
+</pre></td> 
+       </tr> 
+       <tr class="b"> 
+        <td width="4%"><img src="https://i.ibb.co/GHGDwmT/icon-error-sml.gif" alt=""></td> 
+        <td><a name="com.flipkart.fpg.rules.MetricsTest"></a>com.flipkart.fpg.rules.MetricsTest</td>
+       </tr> 
+       <tr class="a"> 
+        <td></td> 
+        <td><pre>java.lang.AssertionError: Architecture Violation [Priority: MEDIUM] - Rule 'classes that reside in any package ['..resources..'] should method must use annotations metrics' was violated (6 times):
+Method org.example.empApi.resources.EmployeeResource$HelloDropWizardResource.sayHello(java.util.Optional) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.empApi.resources.EmployeeResource.addEmployee(org.example.empApi.model.Employee) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.empApi.resources.EmployeeResource.deleteEmloyee(int) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]
+Method org.example.empApi.resources.EmployeeResource.getAllEmployee() is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.empApi.resources.EmployeeResource.getEmployee(long) is not using metrics annotation [Metered, ResponseMetered, ExceptionMetered]
+Method org.example.empApi.resources.EmployeeResource.getEmployee(long, org.example.empApi.model.Employee) is not using metrics annotation [Timed, Metered, ResponseMetered, ExceptionMetered]</pre></td> 
        </tr> 
       </tbody>
      </table>
@@ -672,7 +734,7 @@ Method org.example.empApi.service.ExternalApiConsumerService1.fun() is not using
   </div> 
   <div id="footer"> 
    <div class="xright">
-     Copyright © 2020.. 
+     Copyright © 2020 Flipkart 
    </div> 
    <div class="clear"> 
     <hr> 
